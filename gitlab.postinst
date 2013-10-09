@@ -241,7 +241,7 @@ case "$1" in
       if [ -z "$2" ]
       then
          # determine the FQDN of the gitlab server
-#         FQDN=$(dialog --inputbox "Please enter FQDN of GitLab-Server." 0 0 "$(hostname -f)" 3>&1 1>&2 2>&3 3>&-)
+         FQDN=$(dialog --inputbox "Please enter FQDN of GitLab-Server." 0 0 "$(hostname -f)" 3>&1 1>&2 2>&3 3>&-)
 
          # running the tasks
          add_user
@@ -253,7 +253,7 @@ case "$1" in
       else
          # in case of upgrade. but at the moment no upgrade needed.
          # determine the FQDN of the gitlab server
-#         FQDN=$(dialog --inputbox "Please enter FQDN of GitLab-Server." 0 0 "$(hostname -f)" 3>&1 1>&2 2>&3 3>&-)
+         FQDN=$(dialog --inputbox "Please enter FQDN of GitLab-Server." 0 0 "$(hostname -f)" 3>&1 1>&2 2>&3 3>&-)
 
          # running the tasks
          add_user
