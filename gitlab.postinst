@@ -9,6 +9,7 @@ set -e
 #
 add_user() {
    # check if git user already exists and if not create it
+   # TODO What if user exists with different home directory or other options?
    id -u git > /dev/null 2>&1 || {
       adduser --quiet --system --group --disabled-login \
       --home /var/lib/gitlab --shell /bin/sh --gecos 'GitLab User' git
@@ -71,6 +72,17 @@ create_dirs() {
    }
 }
 
+
+#
+# Function: change_rights
+#
+# TODO The reason for this is the .secret file in /usr/share/gitlab
+# and some tasks that won't work if owner is not git
+#
+change_rights() {
+   chown -R git:git /usr/share/gitlab
+}
+
 #
 # Function: gitlab_shell_install
 #
@@ -85,6 +97,21 @@ gitlab_shell_install() {
 
    # edit gitlab-shell configuration
    sed -i "s/localhost/$1/" /etc/gitlab/gitlab-shell.yml
+
+   # initialize gitlab-shell
+   cd /var/lib/gitlab/gitlab-shell
+   sudo -u git ./bin/install
+}
+
+#
+# Function: gitlab_shell_update
+#
+# Description: updates gitlab-shell directory and initialize it
+#
+gitlab_shell_update() {
+   # create gitlab-shell directory
+   cp -a /usr/share/gitlab-shell /var/lib/gitlab
+   chown -R git:git /var/lib/gitlab/gitlab-shell
 
    # initialize gitlab-shell
    cd /var/lib/gitlab/gitlab-shell
@@ -173,6 +200,40 @@ gitlab_app_initialize() {
 }
 
 #
+# Function: gitlab_app_update
+#
+# Description: update the gitlab application
+#
+gitlab_app_update() {
+   cd /usr/share/gitlab
+   # 5.0 to 5.1
+   sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
+   sudo -u git -H bundle exec rake migrate_merge_requests RAILS_ENV=production
+
+   # 5.1 to 5.2
+   sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
+
+   # 5.2 to 5.3
+   sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
+
+   # 5.3 to 5.4
+   sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
+
+   # 5.4 to 6.0
+   sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
+   sudo -u git -H bundle exec rake migrate_groups RAILS_ENV=production
+   sudo -u git -H bundle exec rake migrate_global_projects RAILS_ENV=production
+   sudo -u git -H bundle exec rake migrate_keys RAILS_ENV=production
+   sudo -u git -H bundle exec rake migrate_inline_notes RAILS_ENV=production
+   sudo -u git -H bundle exec rake gitlab:satellites:create RAILS_ENV=production
+   # Clear redis cache
+   sudo -u git -H bundle exec rake cache:clear RAILS_ENV=production
+   # Clear and precompile assets
+   sudo -u git -H bundle exec rake assets:clean RAILS_ENV=production
+   sudo -u git -H bundle exec rake assets:precompile RAILS_ENV=production
+}
+
+#
 # Description: running configuration tasks
 #
 case "$1" in
@@ -180,17 +241,27 @@ case "$1" in
       if [ -z "$2" ]
       then
          # determine the FQDN of the gitlab server
-         FQDN=$(dialog --inputbox "Please enter FQDN of GitLab-Server." 0 0 "$(hostname -f)" 3>&1 1>&2 2>&3 3>&-)
+#         FQDN=$(dialog --inputbox "Please enter FQDN of GitLab-Server." 0 0 "$(hostname -f)" 3>&1 1>&2 2>&3 3>&-)
 
          # running the tasks
          add_user
          create_dirs
+         change_rights
          gitlab_shell_install $FQDN
          gitlab_db_initialize
          gitlab_app_initialize $FQDN
       else
          # in case of upgrade. but at the moment no upgrade needed.
-         echo "Upgrading not implementated yet"
+         # determine the FQDN of the gitlab server
+#         FQDN=$(dialog --inputbox "Please enter FQDN of GitLab-Server." 0 0 "$(hostname -f)" 3>&1 1>&2 2>&3 3>&-)
+
+         # running the tasks
+         add_user
+         create_dirs
+         change_rights
+         gitlab_shell_update
+         gitlab_app_update
+         dialog --msgbox "Experimental Update - Warning - Configuration files unchanged - Please adjust" 0 0
       fi
    ;;
 esac
