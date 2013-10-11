@@ -30,6 +30,10 @@ create_dirs() {
    mkdir -p /var/lib/gitlab/gitlab-satellites
    chown git:git /var/lib/gitlab/gitlab-satellites
 
+   # create gitlab uploads directory
+   mkdir -p /var/lib/gitlab/uploads
+   chown git:git /var/lib/gitlab/uploads
+
    # create gitlab cache directory
    mkdir -p /var/cache/gitlab
    chown git:git /var/cache/gitlab
@@ -78,6 +82,7 @@ create_dirs() {
 #
 # TODO The reason for this is the .secret file in /usr/share/gitlab
 # and some tasks that won't work if owner is not git
+# Actually commented out for testing
 #
 change_rights() {
    chown -R git:git /usr/share/gitlab
@@ -234,6 +239,15 @@ gitlab_app_update() {
 }
 
 #
+# Function: gitlab_gen_secret
+#
+# Description: generate the hex secret token and write it to gitlab folder
+#
+gitlab_gen_secret() {
+   hexdump /dev/urandom | head | cut --bytes=10-60 | tr -d ' \n' | cut --bytes=-128 > /usr/share/gitlab/.secret
+}
+
+#
 # Description: running configuration tasks
 #
 case "$1" in
@@ -245,8 +259,9 @@ case "$1" in
 
          # running the tasks
          add_user
+         gitlab_gen_secret
          create_dirs
-         change_rights
+#         change_rights
          gitlab_shell_install $FQDN
          gitlab_db_initialize
          gitlab_app_initialize $FQDN
@@ -258,7 +273,8 @@ case "$1" in
          # running the tasks
          add_user
          create_dirs
-         change_rights
+         gitlab_gen_secret
+#         change_rights
          gitlab_shell_update
          gitlab_app_update
          dialog --msgbox "Experimental Update - Warning - Configuration files unchanged - Please adjust" 0 0
