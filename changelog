@@ -1,4 +1,4 @@
-gitlab (6.1.0-1+squeeze1) unstable; urgency=low
+gitlab (6.0.0-1+squeeze1) unstable; urgency=low
 
   * Package testet under Debian Wheezy
   * Package based on GitLab-Version 6.1.0
