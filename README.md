@@ -19,14 +19,7 @@ Debian-Folder to build GitLab DPKG-Package.
 
 ## Prepare Debian Squeeze
 
-    cat > /etc/apt/sources.list.d/daniels.list << EOF
-    deb http://176.28.19.74/ squeeze main contrib non-free
-    deb-src http://176.28.19.74/ squeeze main contrib non-free
-    EOF
-
-    wget -O - http://176.28.19.74/key.asc | apt-key add - && apt-get update
-
-    apt-get install autoconf automake bundler debhelper libcurl4-openssl-dev libffi-dev libgdbm-dev libicu-dev libmagic-dev libmysqlclient-dev libncurses5-dev libpq-dev libreadline-dev libruby2.0 libssl-dev libxml2-dev libxslt1-dev libyaml-dev quilt ruby2.0 ruby2.0-dev zlib1g-dev
+    apt-get install autoconf automake bundler debhelper libcurl4-openssl-dev libffi-dev libgdbm-dev libicu-dev libmagic-dev libmysqlclient-dev libncurses5-dev libpq-dev libreadline-dev libruby1.9.1 libssl-dev libxml2-dev libxslt1-dev libyaml-dev quilt ruby1.9.3 ruby1.9.1-dev zlib1g-dev
 
 ## Build Package:
 
