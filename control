@@ -4,8 +4,8 @@ Priority: optional
 Maintainer: Daniel Baeurer <daniel.baeurer@gmail.com>
 Build-Depends: autoconf, automake, build-essential, bundler, debhelper, git, libcurl4-openssl-dev,
  libffi-dev, libgdbm-dev, libicu-dev, libmagic-dev, libmysqlclient-dev, libncurses5-dev, libpq-dev, libreadline-dev,
- libruby1.9.1, libssl-dev, libxml2-dev, libxslt1-dev, libyaml-dev, quilt,
- ruby1.9.1, ruby1.9.1-dev, zlib1g-dev, ca-certificates
+ libruby (>= 1.9.3), libssl-dev, libxml2-dev, libxslt1-dev, libyaml-dev, quilt,
+ ruby (>= 1.9.3), ruby-dev (>= 1.9.3), zlib1g-dev, ca-certificates
 Standards-Version: 3.9.3
 Homepage: http://gitlabhq.com/
 
@@ -14,7 +14,7 @@ Architecture: all
 Pre-Depends: adduser
 Depends: ${shlibs:Depends}, ${misc:Depends}, bundler, curl, dialog, git, libmagic1,
  libpython2.6 | libpython2.7, mail-transport-agent | postfix, mysql-server | postgresql,
- python-docutils, python-pygments, redis-server (>= 2:2.4.0), ruby1.9.1, sudo,
+ python-docutils, python-pygments, redis-server (>= 2:2.4.0), ruby (>= 1.9.3), sudo,
  libicu48, libxslt1.1
 Description: Self hosted Git management software
  GitLab allows you to
