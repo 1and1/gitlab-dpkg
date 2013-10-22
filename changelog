@@ -4,10 +4,10 @@ gitlab (6.0.0-1+squeeze1) unstable; urgency=low
 
  -- Andreas Wirooks <andreas.wirooks@1und1.de>  Fri, 21 Oct 2013 15:33:33 +0100
 
-gitlab (5.0.1-1+wheezy1) unstable; urgency=low
+gitlab (5.0.1-1+squeeze1) unstable; urgency=low
 
   * Initial GitLab build
-  * Package testet under Debian Wheezy
+  * Package testet under Debian Squeeze
   * Package based on GitLab-Version 5.0.1
   * Package include gitlab-shell Version 1.1.0
 
