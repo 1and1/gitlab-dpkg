@@ -1,3 +1,9 @@
+gitlab (6.0.2-1+squeeze1) unstable; urgency=low
+
+  * Updated to 6.0.2
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Fri, 23 Oct 2013 13:11:11 +0100
+
 gitlab (6.0.0-1+squeeze1) unstable; urgency=low
 
   * Based on Daniel Baeurers package for Gitlab 6.1.0
