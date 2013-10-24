@@ -1,3 +1,12 @@
+# Uncomment and customize the last line to run in a non-root path
+# WARNING: This feature is known to work, but unsupported
+# Note that three settings need to be changed for this to work.
+# 1) In your application.rb file: config.relative_url_root = "/gitlab"
+# 2) In your gitlab.yml file: relative_url_root: /gitlab
+# 3) In your unicorn.rb: ENV['RAILS_RELATIVE_URL_ROOT'] = "/gitlab"
+#
+# ENV['RAILS_RELATIVE_URL_ROOT'] = "/gitlab"
+
 # Sample verbose configuration file for Unicorn (not Rack)
 #
 # This configuration file documents many features of Unicorn
