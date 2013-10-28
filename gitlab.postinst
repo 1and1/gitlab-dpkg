@@ -86,6 +86,7 @@ create_dirs() {
 #
 change_rights() {
    chown -R git:git /usr/share/gitlab
+   chown -R git:git /usr/share/gitlab-shell
 }
 
 #
