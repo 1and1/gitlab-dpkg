@@ -14,8 +14,8 @@
  
  function stop
  {
--  bundle exec sidekiqctl stop $sidekiq_pidfile &>> $sidekiq_logfile
-+  bundle exec sidekiqctl stop /var/run/gitlab/sidekiq.pid &>> $sidekiq_logfile
+-  bundle exec sidekiqctl stop $sidekiq_pidfile >> $sidekiq_logfile 2>&1
++  bundle exec sidekiqctl stop /var/run/gitlab/sidekiq.pid >> $sidekiq_logfile 2>&1
  }
  
  function killall
@@ -32,8 +32,8 @@
  
  function start_sidekiq
  {
--  bundle exec sidekiq -q post_receive,mailer,system_hook,project_web_hook,gitlab_shell,common,default -e $RAILS_ENV -P $sidekiq_pidfile $@ &>> $sidekiq_logfile
-+  bundle exec sidekiq -q post_receive,mailer,system_hook,project_web_hook,gitlab_shell,common,default -e $RAILS_ENV -P /var/run/gitlab/sidekiq.pid $@ &>> $sidekiq_logfile
+-  bundle exec sidekiq -q post_receive,mailer,system_hook,project_web_hook,gitlab_shell,common,default -e $RAILS_ENV -P $sidekiq_pidfile $@ >> $sidekiq_logfile 2>&1
++  bundle exec sidekiq -q post_receive,mailer,system_hook,project_web_hook,gitlab_shell,common,default -e $RAILS_ENV -P /var/run/gitlab/sidekiq.pid $@ >> $sidekiq_logfile 2>&1
  }
  
  case "$1" in
