@@ -1,2 +1,2 @@
-01_sidekiq.rake.patch
 03_pbuilder.patch
+04_startinitscripts.patch

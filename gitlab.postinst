@@ -212,26 +212,13 @@ gitlab_app_initialize() {
 #
 gitlab_app_update() {
    cd /usr/share/gitlab
-   # 5.0 to 5.1
+   # 6.0 to 6.1
    sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
-   sudo -u git -H bundle exec rake migrate_merge_requests RAILS_ENV=production
+   sudo -u git -H bundle exec rake migrate_iids RAILS_ENV=production
 
-   # 5.1 to 5.2
-   sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
-
-   # 5.2 to 5.3
+   # 6.1 to 6.2
    sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
 
-   # 5.3 to 5.4
-   sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
-
-   # 5.4 to 6.0
-   sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
-   sudo -u git -H bundle exec rake migrate_groups RAILS_ENV=production
-   sudo -u git -H bundle exec rake migrate_global_projects RAILS_ENV=production
-   sudo -u git -H bundle exec rake migrate_keys RAILS_ENV=production
-   sudo -u git -H bundle exec rake migrate_inline_notes RAILS_ENV=production
-   sudo -u git -H bundle exec rake gitlab:satellites:create RAILS_ENV=production
    # Clear redis cache
    sudo -u git -H bundle exec rake cache:clear RAILS_ENV=production
    # Clear and precompile assets
