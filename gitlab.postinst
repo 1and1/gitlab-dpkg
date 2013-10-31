@@ -86,6 +86,7 @@ create_dirs() {
 #
 change_rights() {
    chown -R git:git /usr/share/gitlab
+   chown -R git:git /usr/share/gitlab-shell
 }
 
 #
@@ -261,7 +262,7 @@ case "$1" in
          add_user
          gitlab_gen_secret
          create_dirs
-#         change_rights
+         change_rights
          gitlab_shell_install $FQDN
          gitlab_db_initialize
          gitlab_app_initialize $FQDN
@@ -274,7 +275,7 @@ case "$1" in
          add_user
          create_dirs
          gitlab_gen_secret
-#         change_rights
+         change_rights
          gitlab_shell_update
          gitlab_app_update
          dialog --msgbox "Experimental Update - Warning - Configuration files unchanged - Please adjust" 0 0

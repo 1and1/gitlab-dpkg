@@ -1,8 +1,14 @@
+gitlab (6.0.2-1+wheezy1) unstable; urgency=low
+
+  * Updated to 6.0.2
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Wed, 31 Oct 2013 09:25:25 +0100
+
 gitlab (6.0.0-1+wheezy1) unstable; urgency=low
 
   * Based on Daniel Baeurers package for Gitlab 6.1.0
 
- -- Andreas Wirooks <andreas.wirooks@1und1.de>  Fri, 10 Oct 2013 12:45:45 +0100
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Fri, 21 Oct 2013 15:33:33 +0100
 
 gitlab (5.0.1-1+wheezy1) unstable; urgency=low
 
