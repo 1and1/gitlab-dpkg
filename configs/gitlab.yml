@@ -50,9 +50,8 @@ production: &base
     ##   COLOR  = 5
     # default_theme: 2 # default: 2
 
-
     ## Users management
-    # default: false - Account passwords are not sent via the email if signup is enabled. 
+    # default: false - Account passwords are not sent via the email if signup is enabled.
     # signup_enabled: true
 
     ## Automatic issue closing

@@ -1,3 +1,9 @@
+gitlab (6.2.2-1+squeeze1) unstable; urgency=low
+
+  * Updated to 6.2.2 and imported some additions from Daniels 6.2.2
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Mon, 04 Nov 2013 09:19:19 +0100
+
 gitlab (6.2.1-1+squeeze1) unstable; urgency=low
 
   * Updated to 6.2.1
