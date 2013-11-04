@@ -247,9 +247,9 @@ case "$1" in
 
          # running the tasks
          add_user
-         gitlab_gen_secret
          create_dirs
          change_rights
+         gitlab_gen_secret
          gitlab_shell_install $FQDN
          gitlab_db_initialize
          gitlab_app_initialize $FQDN
