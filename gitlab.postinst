@@ -265,7 +265,6 @@ case "$1" in
          change_rights
          gitlab_shell_update
          gitlab_app_update
-         dialog --msgbox "Experimental Update - Warning - Configuration files unchanged - Please adjust" 0 0
       fi
    ;;
 esac
