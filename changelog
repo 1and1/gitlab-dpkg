@@ -1,4 +1,4 @@
-gitlab (6.2.3-2+squeeze1) unstable; urgency=low
+gitlab (6.2.3-2+wheezy1) unstable; urgency=low
 
   * Updated gitlab shell to 1.7.6
 
