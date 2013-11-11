@@ -1,3 +1,9 @@
+gitlab (6.2.3-3+squeeze1) unstable; urgency=low
+
+  * Updated gitlab-shell to 1.7.7
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Mon, 11 Nov 2013 16:08:08 +0100
+
 gitlab (6.2.3-2+squeeze1) unstable; urgency=low
 
   * Updated gitlab shell to 1.7.6
