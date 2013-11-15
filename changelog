@@ -1,3 +1,10 @@
+gitlab (6.2.4-1+wheezy1) unstable; urgency=low
+
+  * Updated gitlab to 6.2.4
+  * Updated gitlab-shell to 1.7.8
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Fri, 15 Nov 2013 15:54:08 +0100
+
 gitlab (6.2.3-3+wheezy1) unstable; urgency=low
 
   * Updated gitlab-shell to 1.7.7
