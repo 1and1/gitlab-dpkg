@@ -25,13 +25,13 @@ config/environments                    etc/gitlab
 
 config/database.yml.mysql              etc/gitlab
 config/database.yml.postgresql         etc/gitlab
-config/gitlab.yml.example              etc/gitlab/gitlab.yml
-config/resque.yml.example              etc/gitlab/resque.yml
-config/unicorn.rb.example              etc/gitlab/unicorn.rb
+config/gitlab.yml                      etc/gitlab
+config/resque.yml                      etc/gitlab
+config/unicorn.rb                      etc/gitlab
 
-config/initializers/rack_attack.rb.example etc/gitlab/rack_attack.rb
+config/initializers/rack_attack.rb     etc/gitlab
 
-gitlab-shell/config.yml.example        etc/gitlab/gitlab-shell.yml
+gitlab-shell/gitlab-shell.yml          etc/gitlab
 
 
 config/aws.yml.example     usr/share/doc/gitlab
