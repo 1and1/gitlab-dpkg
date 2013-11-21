@@ -1,5 +1,11 @@
-gitlab (6.2.4-1+wheezy1) unstable; urgency=low
+gitlab (6.2.4-2+wheezy1) unstable; urgency=low
 
+  * Updated gitlab-shell 1.7.9
+  * Changed all configfiles to patches to make updates easier
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Thu, 21 Nov 2013 15:42:53 +0100
+
+gitlab (6.2.4-1+wheezy1) unstable; urgency=low
   * Updated gitlab to 6.2.4
   * Updated gitlab-shell to 1.7.8
 
