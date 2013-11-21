@@ -11,6 +11,11 @@ override_dh_installinit:
 override_dh_auto_build:
 	bundle install --deployment --without development test
 	rm -rf vendor/bundle/ruby/1.9.1/cache
+	mv config/gitlab.yml.example config/gitlab.yml
+	mv config/resque.yml.example config/resque.yml
+	mv config/unicorn.rb.example config/unicorn.rb
+	mv config/initializers/rack_attack.rb.example config/initializers/rack_attack.rb
+	mv gitlab-shell/config.yml.example gitlab-shell/gitlab-shell.yml
 
 override_dh_compress:
 	dh_compress -X usr/share/doc/gitlab/doc/
