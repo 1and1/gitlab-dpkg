@@ -1,18 +1,16 @@
 Description: use quilt to adjust the inid.d script to the right location
  use quilt to adjust the inid.d script to the right location
-Author: Andreas Wirooks <andreas.wirooks@1und1.de>
 
---- gitlab-6.2.4.orig/lib/support/init.d/gitlab
-+++ gitlab-6.2.4/lib/support/init.d/gitlab
-@@ -20,10 +20,10 @@ RAILS_ENV="production"
- 
+--- gitlab-6.3.0.orig/lib/support/init.d/gitlab
++++ gitlab-6.3.0/lib/support/init.d/gitlab
+@@ -21,9 +21,9 @@ RAILS_ENV="production"
  # Script variable names should be lower-case not to conflict with internal
  # /bin/sh variables such as PATH, EDITOR or SHELL.
--app_root="/home/git/gitlab"
-+app_root="/usr/share/gitlab"
  app_user="git"
+-app_root="/home/$app_user/gitlab"
 -pid_path="$app_root/tmp/pids"
 -socket_path="$app_root/tmp/sockets"
++app_root="/usr/share/gitlab"
 +pid_path="/var/run/gitlab"
 +socket_path="/var/run/gitlab"
  web_server_pid_path="$pid_path/unicorn.pid"
