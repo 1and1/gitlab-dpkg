@@ -9,7 +9,7 @@ Debian-Folder to build GitLab DPKG-Package.
 
     git clone https://github.com/gitlabhq/gitlab-shell
 
-    cd gitlab-shell && git checkout v1.7.8
+    cd gitlab-shell && git checkout v1.7.9
 
     cd ../.. && tar -zcf gitlab_6.2.4.orig.tar.gz gitlab_6.2.4
 
