@@ -33,6 +33,7 @@ config/initializers/rack_attack.rb     etc/gitlab
 
 gitlab-shell/gitlab-shell.yml          etc/gitlab
 
+lib/support/init.d/gitlab              etc/init.d
 
 config/aws.yml.example     usr/share/doc/gitlab
 config/database.yml.*      usr/share/doc/gitlab
