@@ -1,3 +1,4 @@
 01_pbuilder.patch
 02_startinitscripts.patch
 03_adjustconfigfiles.patch
+04_initdscript.patch

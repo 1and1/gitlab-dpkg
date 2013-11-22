@@ -1,7 +1,8 @@
 gitlab (6.2.4-2+squeeze1) unstable; urgency=low
 
   * Updated gitlab-shell 1.7.9
-  * Renaming during installing does not work. Do it after build'
+  * Renaming during installing does not work do it after build
+  * Changed the init.d script to use quilt to make updates easier
   * Changed all configfiles to patches to make updates easier
 
  -- Andreas Wirooks <andreas.wirooks@1und1.de>  Thu, 21 Nov 2013 15:42:53 +0100
