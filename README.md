@@ -15,7 +15,7 @@ Debian-Folder to build GitLab DPKG-Package.
 
     cd gitlab_6.3.0 && git clone https://github.com/1and1/gitlab-dpkg debian
 
-    cd debian && git checkout squeeze-6-2-update
+    cd debian && git checkout squeeze-6-3-update
 
 ## Prepare Debian Squeeze
 
