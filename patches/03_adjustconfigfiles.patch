@@ -2,9 +2,9 @@ Description: adjusted config files to use correct directories
  adjusted config files to use correct directories by packagelayout etc.
 Author: Andreas Wirooks <andreas.wirooks@1und1.de>
 
---- gitlab-6.2.4.orig/gitlab-shell/config.yml.example
-+++ gitlab-6.2.4/gitlab-shell/config.yml.example
-@@ -15,10 +15,10 @@ http_settings:
+--- a/gitlab-shell/config.yml.example
++++ b/gitlab-shell/config.yml.example
+@@ -15,10 +15,10 @@
  # Give the canonicalized absolute pathname,
  # REPOS_PATH MUST NOT CONTAIN ANY SYMLINK!!!
  # Check twice that none of the components is a symlink, including "/home".
@@ -17,7 +17,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
  # Redis settings used for pushing commit notices to gitlab
  redis:
-@@ -30,7 +30,7 @@ redis:
+@@ -30,7 +30,7 @@
  
  # Log file.
  # Default is gitlab-shell.log in the root directory.
@@ -26,9 +26,9 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
  # Log level. INFO by default
  log_level: INFO
---- gitlab-6.2.4.orig/config/gitlab.yml.example
-+++ gitlab-6.2.4/config/gitlab.yml.example
-@@ -29,7 +29,7 @@ production: &base
+--- a/config/gitlab.yml.example
++++ b/config/gitlab.yml.example
+@@ -29,7 +29,7 @@
      # relative_url_root: /gitlab
  
      # Uncomment and customize if you can't use the default user to run GitLab (default: 'git')
@@ -37,7 +37,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
      ## Email settings
      # Email address used in the "From" field in mails sent by GitLab
-@@ -50,9 +50,8 @@ production: &base
+@@ -50,9 +50,8 @@
      ##   COLOR  = 5
      # default_theme: 2 # default: 2
  
@@ -47,8 +47,8 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
 +    # default: false - Account passwords are not sent via the email if signup is enabled.
      # signup_enabled: true
  
-     ## Automatic issue closing
-@@ -157,7 +156,7 @@ production: &base
+     # Restrict setting visibility levels for non-admin users.
+@@ -161,7 +160,7 @@
    # GitLab Satellites
    satellites:
      # Relative paths are relative to Rails.root (default: tmp/repo_satellites/)
@@ -57,7 +57,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
    ## Backup settings
    backup:
-@@ -167,8 +166,8 @@ production: &base
+@@ -171,8 +170,8 @@
    ## GitLab Shell settings
    gitlab_shell:
      # REPOS_PATH MUST NOT BE A SYMLINK!!!
@@ -68,9 +68,9 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
      # Git over HTTP
      upload_pack: true
---- gitlab-6.2.4.orig/config/unicorn.rb.example
-+++ gitlab-6.2.4/config/unicorn.rb.example
-@@ -30,24 +30,24 @@ worker_processes 2
+--- a/config/unicorn.rb.example
++++ b/config/unicorn.rb.example
+@@ -30,24 +30,24 @@
  
  # Help ensure your application will always spawn in the symlinked
  # "current" directory that Capistrano sets up.
@@ -100,8 +100,8 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
  # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
  # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
---- gitlab-6.2.4.orig/config/database.yml.postgresql
-+++ gitlab-6.2.4/config/database.yml.postgresql
+--- a/config/database.yml.postgresql
++++ b/config/database.yml.postgresql
 @@ -4,11 +4,11 @@
  production:
    adapter: postgresql
@@ -118,7 +118,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    # port: 5432 
    # socket: /tmp/postgresql.sock
  
-@@ -18,10 +18,11 @@ production:
+@@ -18,10 +18,11 @@
  development:
    adapter: postgresql
    encoding: unicode
@@ -133,7 +133,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    # socket: /tmp/postgresql.sock
  
  #
-@@ -30,10 +31,11 @@ development:
+@@ -30,10 +31,11 @@
  staging:
    adapter: postgresql
    encoding: unicode
@@ -148,7 +148,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    # socket: /tmp/postgresql.sock
  
  # Warning: The database defined as "test" will be erased and
-@@ -42,8 +44,9 @@ staging:
+@@ -42,8 +44,9 @@
  test: &test
    adapter: postgresql
    encoding: unicode
@@ -161,16 +161,16 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
 +  password: 'gitlab'
 +  host: localhost
    # socket: /tmp/postgresql.sock
---- gitlab-6.2.4.orig/config/database.yml.mysql
-+++ gitlab-6.2.4/config/database.yml.mysql
-@@ -5,11 +5,11 @@ production:
+--- a/config/database.yml.mysql
++++ b/config/database.yml.mysql
+@@ -5,11 +5,11 @@
    adapter: mysql2
    encoding: utf8
    reconnect: false
 -  database: gitlabhq_production
 +  database: gitlab
    pool: 10
-   username: gitlab
+   username: git
 -  password: "secure password"
 -  # host: localhost
 +  password: 'gitlab'
@@ -178,7 +178,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    # socket: /tmp/mysql.sock
  
  #
-@@ -19,10 +19,11 @@ development:
+@@ -19,10 +19,11 @@
    adapter: mysql2
    encoding: utf8
    reconnect: false
@@ -193,7 +193,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    # socket: /tmp/mysql.sock
  
  # Warning: The database defined as "test" will be erased and
-@@ -32,8 +33,9 @@ test: &test
+@@ -32,8 +33,9 @@
    adapter: mysql2
    encoding: utf8
    reconnect: false
@@ -206,8 +206,8 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
 +  password: 'gitlab'
 +  host: localhost
    # socket: /tmp/mysql.sock
---- gitlab-6.2.4.orig/config/resque.yml.example
-+++ gitlab-6.2.4/config/resque.yml.example
+--- a/config/resque.yml.example
++++ b/config/resque.yml.example
 @@ -1,3 +1,3 @@
  development: redis://localhost:6379
  test: redis://localhost:6379
