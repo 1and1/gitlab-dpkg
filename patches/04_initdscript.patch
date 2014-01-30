@@ -3,7 +3,19 @@ Description: use quilt to adjust the inid.d script to the right location
 
 --- a/lib/support/init.d/gitlab
 +++ b/lib/support/init.d/gitlab
-@@ -30,9 +30,9 @@
+@@ -23,6 +23,11 @@
+ # An example defaults file can be found in lib/support/init.d/gitlab.default.example
+ ###
+ 
++if [ ! -d /var/run/gitlab ]; then
++   mkdir -p /var/run/gitlab
++   chown git:git /var/run/gitlab
++   chmod 0750 /var/run/gitlab
++fi
+ 
+ ### Environment variables
+ RAILS_ENV="production"
+@@ -30,9 +35,9 @@
  # Script variable names should be lower-case not to conflict with
  # internal /bin/sh variables such as PATH, EDITOR or SHELL.
  app_user="git"

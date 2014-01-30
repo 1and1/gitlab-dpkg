@@ -1,3 +1,16 @@
+gitlab (6.5.1-1+wheezy1.1) unstable; urgency=low
+
+  * Updated to version 6.5.1
+  * Refreshed all patches
+  * Create /var/run/gitlab directory in init.d if it does not exist at start,
+    wich is typical for wheezy and up where /var/run is on a tmpfs. It does
+    not make sense to package files lying in /var/run anymore
+  * Patched the /etc/default/gitlab file to match package structure
+  * Raised unicorn timeout from 30 to 300 seconds. Especially the first start
+    of a fresh gitlab will fail if the machine is not powerfull enough
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Thu, 30 Jan 2014 12:50:36 +0100
+
 gitlab (6.4.3-2+wheezy1) unstable; urgency=low
 
   * Control: Changed architecture from all to any because some gems have native

@@ -48,7 +48,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
      # signup_enabled: true
  
      # Restrict setting visibility levels for non-admin users.
-@@ -165,7 +164,7 @@
+@@ -175,7 +174,7 @@
    # GitLab Satellites
    satellites:
      # Relative paths are relative to Rails.root (default: tmp/repo_satellites/)
@@ -57,7 +57,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
    ## Backup settings
    backup:
-@@ -174,11 +173,11 @@
+@@ -184,11 +183,11 @@
  
    ## GitLab Shell settings
    gitlab_shell:
@@ -88,7 +88,8 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  listen "127.0.0.1:8080", :tcp_nopush => true
  
  # nuke workers after 30 seconds instead of 60 seconds (the default)
- timeout 30
+-timeout 30
++timeout 300
  
  # feel free to point this anywhere accessible on the filesystem
 -pid "/home/git/gitlab/tmp/pids/unicorn.pid"
@@ -220,9 +221,23 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
 +production: redis://localhost:6379
 --- a/lib/support/init.d/gitlab.default.example
 +++ b/lib/support/init.d/gitlab.default.example
-@@ -11,4 +11,4 @@
+@@ -11,16 +11,16 @@
  
  # app_root defines the folder in which gitlab and it's components are installed.
  # The default is "/home/$app_user/gitlab"
 -app_root="/home/$app_user/gitlab"
 +app_root="/usr/share/gitlab"
+ 
+ # pid_path defines a folder in which the gitlab and it's components place their pids.
+ # This variable is also used below to define the relevant pids for the gitlab components.
+ # The default is "$app_root/tmp/pids"
+-pid_path="$app_root/tmp/pids"
++pid_path="/var/run/gitlab"
+ 
+ # socket_path defines the folder in which gitlab places the sockets
+ #The default is "$app_root/tmp/sockets"
+-socket_path="$app_root/tmp/sockets"
++socket_path="/var/run/gitlab"
+ 
+ # web_server_pid_path defines the path in which to create the pid file fo the web_server
+ # The default is "$pid_path/unicorn.pid"
