@@ -3,4 +3,5 @@
 03_adjustconfigfiles.patch
 04_initdscript.patch
 05changepathnames.patch
+06restoreignoreversion.patch
 https_login_patch.patch

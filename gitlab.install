@@ -4,7 +4,7 @@ db             usr/share/gitlab
 Gemfile        usr/share/gitlab
 Gemfile.lock   usr/share/gitlab
 lib            usr/share/gitlab
-public         usr/share/gitlab
+public.example usr/share/gitlab
 Rakefile       usr/share/gitlab
 script         usr/share/gitlab
 VERSION        usr/share/gitlab
