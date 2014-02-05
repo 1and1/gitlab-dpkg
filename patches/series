@@ -2,4 +2,5 @@
 02_startinitscripts.patch
 03_adjustconfigfiles.patch
 04_initdscript.patch
+05changepathnames.patch
 https_login_patch.patch

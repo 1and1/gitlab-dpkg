@@ -1,4 +1,4 @@
-gitlab (6.5.1-1+wheezy1.1) unstable; urgency=low
+gitlab (6.5.1-1+wheezy1) unstable; urgency=low
 
   * Updated to version 6.5.1
   * Refreshed all patches
@@ -10,6 +10,8 @@ gitlab (6.5.1-1+wheezy1.1) unstable; urgency=low
     of a fresh gitlab will fail if the machine is not powerfull enough
   * Reverted c447a2131d864cb715c0fb9ba562db67ade2f7c6 because login via https
     does not work in 6.5.1 anymore
+  * Changed a lot of other locations where /home/git was hardcoded to the
+    correct package paths like /usr/share/gitlab and /var/lib/gitlab
 
  -- Andreas Wirooks <andreas.wirooks@1und1.de>  Thu, 30 Jan 2014 12:50:36 +0100
 
