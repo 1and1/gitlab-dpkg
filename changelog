@@ -1,6 +1,14 @@
+gitlab (6.3.0-5+wheezy1) unstable; urgency=low
+
+  * Ignored the commit hash version check of the restore task because
+    otherwise the it would be compared with the hash of the dummy repo
+  * Moved public from /usr/share/gitlab to /var/lib/gitlab to fix restore task
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Wed, 05 Feb 2014 17:34:09 +0100
+
 gitlab (6.3.0-4+wheezy1) unstable; urgency=low
 
-  * Imported some patches and debian a lot of script changes from actual 6.5.1
+  * Imported some patches and a lot of debian script changes from actual 6.5.1
 
  -- Andreas Wirooks <andreas.wirooks@1und1.de>  Wed, 05 Feb 2014 14:36:36 +0100
 

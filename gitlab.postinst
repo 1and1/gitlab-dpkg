@@ -29,9 +29,9 @@ create_dirs() {
    mkdir -p /var/lib/gitlab/gitlab-satellites
    chown git:git /var/lib/gitlab/gitlab-satellites
 
-   # create gitlab uploads directory
-   mkdir -p /var/lib/gitlab/uploads
-   chown git:git /var/lib/gitlab/uploads
+   # create gitlab public directory
+   mkdir -p /var/lib/gitlab/public
+   chown git:git /var/lib/gitlab/public
 
    # create gitlab cache directory
    mkdir -p /var/cache/gitlab
@@ -105,6 +105,17 @@ gitlab_shell_install() {
    # initialize gitlab-shell
    cd /var/lib/gitlab/gitlab-shell
    sudo -u git ./bin/install
+}
+
+#
+# Function: gitlab_public_install
+#
+# Description: creates public directory from example
+#
+gitlab_public_install() {
+   # create public directory from example
+   cp -a /usr/share/gitlab/public.example/* /var/lib/gitlab/public
+   chown -R git:git /var/lib/gitlab/public
 }
 
 #
@@ -241,6 +252,9 @@ gitlab_upgrade() {
    # install new version of gitlab shell
    gitlab_shell_install $FQDN
 
+   # install new version of public directory
+   gitlab_public_install
+
    # running migration tasks for gitlab
    cd /usr/share/gitlab
    bundle exec rake db:migrate RAILS_ENV=production
@@ -269,6 +283,7 @@ case "$1" in
          create_dummy_git_repo
          gitlab_gen_secret
          gitlab_shell_install $FQDN
+         gitlab_public_install
          gitlab_db_initialize
          gitlab_app_initialize $FQDN
          gitlab_git_global_settings $FQDN
