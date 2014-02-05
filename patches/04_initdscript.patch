@@ -1,9 +1,21 @@
 Description: use quilt to adjust the inid.d script to the right location
  use quilt to adjust the inid.d script to the right location
 
---- gitlab-6.3.0.orig/lib/support/init.d/gitlab
-+++ gitlab-6.3.0/lib/support/init.d/gitlab
-@@ -21,9 +21,9 @@ RAILS_ENV="production"
+--- a/lib/support/init.d/gitlab
++++ b/lib/support/init.d/gitlab
+@@ -15,15 +15,21 @@
+ # Description:       GitLab git repository management
+ ### END INIT INFO
+ 
++if [ ! -d /var/run/gitlab ]; then
++   mkdir -p /var/run/gitlab
++   chown git:git /var/run/gitlab
++   chmod 0750 /var/run/gitlab
++fi
++
+ ### Environment variables
+ RAILS_ENV="production"
+ 
  # Script variable names should be lower-case not to conflict with internal
  # /bin/sh variables such as PATH, EDITOR or SHELL.
  app_user="git"

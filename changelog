@@ -1,3 +1,9 @@
+gitlab (6.3.0-3+wheezy1) unstable; urgency=low
+
+  * Patched inid.d for wheezy tmpfs /var/run and raised timeout workers to 300
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Tue, 04 Feb 2014 16:51:51 +0100
+
 gitlab (6.3.0-2+wheezy1) unstable; urgency=low
 
   * Updated to gitlab-shell 1.8.0
