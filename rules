@@ -6,7 +6,7 @@
 	dh $@ --with quilt
 
 override_dh_installinit:
-	dh_installinit --onlyscripts
+	dh_installinit -pgitlab --name gitlab --onlyscripts
 
 override_dh_auto_build:
 	bundle install --deployment --without development test

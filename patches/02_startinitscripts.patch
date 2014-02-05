@@ -1,16 +1,14 @@
 --- a/script/background_jobs
 +++ b/script/background_jobs
-@@ -2,13 +2,14 @@
+@@ -2,13 +2,13 @@
  
  cd $(dirname $0)/..
  app_root=$(pwd)
 -sidekiq_pidfile="$app_root/tmp/pids/sidekiq.pid"
 -sidekiq_logfile="$app_root/log/sidekiq.log"
--gitlab_user=$(ls -l config.ru | awk '{print $3}')
 +sidekiq_pidfile="/var/run/gitlab/sidekiq.pid"
 +sidekiq_logfile="/var/log/gitlab/sidekiq.log"
-+#gitlab_user=$(ls -l config.ru | awk '{print $3}')
-+gitlab_user=git
+ gitlab_user=$(ls -l config.ru | awk '{print $3}')
  
  function stop
  {
@@ -19,7 +17,7 @@
  }
  
  function killall
-@@ -18,7 +19,7 @@
+@@ -18,7 +18,7 @@
  
  function restart
  {
@@ -28,7 +26,7 @@
      stop
    fi
    killall
-@@ -32,7 +33,7 @@
+@@ -32,7 +32,7 @@
  
  function start_sidekiq
  {

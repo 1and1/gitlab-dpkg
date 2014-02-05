@@ -1,0 +1,124 @@
+--- a/lib/support/deploy/deploy.sh
++++ b/lib/support/deploy/deploy.sh
+@@ -5,19 +5,19 @@
+ set -e
+ 
+ echo 'Deploy: Stoping sidekiq..'
+-cd /home/git/gitlab/ && sudo -u git -H bundle exec rake sidekiq:stop RAILS_ENV=production
++cd /usr/share/gitlab/ && sudo -u git -H bundle exec rake sidekiq:stop RAILS_ENV=production
+ 
+ echo 'Deploy: Show deploy index page'
+-sudo -u git -H cp /home/git/gitlab/public/deploy.html /home/git/gitlab/public/index.html
++sudo -u git -H cp /usr/share/gitlab/public/deploy.html /usr/share/gitlab/public/index.html
+ 
+ echo 'Deploy: Starting backup...'
+-cd /home/git/gitlab/ && sudo -u git -H bundle exec rake gitlab:backup:create RAILS_ENV=production
++cd /usr/share/gitlab/ && sudo -u git -H bundle exec rake gitlab:backup:create RAILS_ENV=production
+ 
+ echo 'Deploy: Stop GitLab server'
+ sudo service gitlab stop
+ 
+ echo 'Deploy: Get latest code'
+-cd /home/git/gitlab/
++cd /usr/share/gitlab/
+ 
+ # clean working directory
+ sudo -u git -H git stash 
+@@ -40,5 +40,5 @@
+ sudo service gitlab start
+ 
+ sleep 10
+-sudo -u git -H rm /home/git/gitlab/public/index.html
++sudo -u git -H rm /usr/share/gitlab/public/index.html
+ echo 'Deploy: Done'
+--- a/lib/support/logrotate/gitlab
++++ b/lib/support/logrotate/gitlab
+@@ -1,7 +1,7 @@
+ # GitLab logrotate settings
+ # based on: http://stackoverflow.com/a/4883967
+ 
+-/home/git/gitlab/log/*.log {
++/var/log/gitlab/*.log {
+     weekly
+     missingok
+     rotate 52
+@@ -11,12 +11,3 @@
+     copytruncate
+ }
+ 
+-/home/git/gitlab-shell/gitlab-shell.log {
+-    weekly
+-    missingok
+-    rotate 52
+-    compress
+-    delaycompress
+-    notifempty
+-    copytruncate
+-}
+--- a/lib/support/nginx/gitlab
++++ b/lib/support/nginx/gitlab
+@@ -3,14 +3,14 @@
+ # App Version: 5.0
+ 
+ upstream gitlab {
+-  server unix:/home/git/gitlab/tmp/sockets/gitlab.socket;
++  server unix:/var/run/gitlab/gitlab.socket;
+ }
+ 
+ server {
+   listen *:80 default_server;         # e.g., listen 192.168.1.1:80; In most cases *:80 is a good idea
+   server_name YOUR_SERVER_FQDN;     # e.g., server_name source.example.com;
+   server_tokens off;     # don't show the version number, a security best practice
+-  root /home/git/gitlab/public;
++  root /usr/home/gitlab/public;
+ 
+   # individual nginx logs for this gitlab vhost
+   access_log  /var/log/nginx/gitlab_access.log;
+--- a/gitlab-shell/support/rewrite-hooks.sh
++++ b/gitlab-shell/support/rewrite-hooks.sh
+@@ -3,7 +3,7 @@
+ # $1 is an optional argument specifying the location of the repositories directory.
+ # Defaults to /home/git/repositories if not provided
+ 
+-home_dir="/home/git"
++home_dir="/var/lib/gitlab"
+ src=${1:-"$home_dir/repositories"}
+ 
+ function create_link_in {
+--- a/gitlab-shell/lib/gitlab_config.rb
++++ b/gitlab-shell/lib/gitlab_config.rb
+@@ -8,11 +8,11 @@
+   end
+ 
+   def repos_path
+-    @config['repos_path'] ||= "/home/git/repositories"
++    @config['repos_path'] ||= "/var/lib/gitlab/repositories"
+   end
+ 
+   def auth_file
+-    @config['auth_file'] ||= "/home/git/.ssh/authorized_keys"
++    @config['auth_file'] ||= "/var/lib/gitlab/.ssh/authorized_keys"
+   end
+ 
+   def gitlab_url
+--- a/gitlab-shell/spec/gitlab_shell_spec.rb
++++ b/gitlab-shell/spec/gitlab_shell_spec.rb
+@@ -16,7 +16,7 @@
+     end
+   end
+   let(:key_id) { "key-#{rand(100) + 100}" }
+-  let(:repository_path) { "/home/git#{rand(100)}/repos" }
++  let(:repository_path) { "/var/lib/gitlab#{rand(100)}/repos" }
+   before do
+     GitlabConfig.any_instance.stub(repos_path: repository_path, audit_usernames: false)
+   end
+--- a/gitlab-shell/support/truncate_repositories.sh
++++ b/gitlab-shell/support/truncate_repositories.sh
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-home_dir="/home/git"
++home_dir="/var/lib/gitlab"
+ 
+ echo "Danger!!! Data Loss"
+ while true; do

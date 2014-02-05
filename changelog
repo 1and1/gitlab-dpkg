@@ -1,3 +1,9 @@
+gitlab (6.3.0-4+wheezy1) unstable; urgency=low
+
+  * Imported some patches and debian a lot of script changes from actual 6.5.1
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Wed, 05 Feb 2014 14:36:36 +0100
+
 gitlab (6.3.0-3+wheezy1) unstable; urgency=low
 
   * Patched inid.d for wheezy tmpfs /var/run and raised timeout workers to 300

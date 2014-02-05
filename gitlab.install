@@ -1,11 +1,12 @@
 app            usr/share/gitlab
+config.ru      usr/share/gitlab
 db             usr/share/gitlab
 Gemfile        usr/share/gitlab
 Gemfile.lock   usr/share/gitlab
 lib            usr/share/gitlab
 public         usr/share/gitlab
-script         usr/share/gitlab
 Rakefile       usr/share/gitlab
+script         usr/share/gitlab
 VERSION        usr/share/gitlab
 
 .bundle/config usr/share/gitlab/.bundle
@@ -22,16 +23,13 @@ config/routes.rb        usr/share/gitlab/config
 
 config/application.rb                  etc/gitlab
 config/environments                    etc/gitlab
-
 config/database.yml.mysql              etc/gitlab
 config/database.yml.postgresql         etc/gitlab
 config/gitlab.yml                      etc/gitlab
+gitlab-shell/gitlab-shell.yml          etc/gitlab
+config/initializers/rack_attack.rb     etc/gitlab
 config/resque.yml                      etc/gitlab
 config/unicorn.rb                      etc/gitlab
-
-config/initializers/rack_attack.rb     etc/gitlab
-
-gitlab-shell/gitlab-shell.yml          etc/gitlab
 
 lib/support/init.d/gitlab              etc/init.d
 
