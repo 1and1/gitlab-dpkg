@@ -4,9 +4,9 @@ gitlab (6.5.1-3+wheezy1) unstable; urgency=low
     otherwise the it would be compared with the hash of the dummy repo
   * Moved public from /usr/share/gitlab to /var/lib/gitlab to fix restore task
 
- -- Andreas Wirooks <andreas.wirooks@1und1.de> Wed, 05 Feb 2014 17:34:09 +0100
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Thu, 06 Feb 2014 09:22:32 +0100
 
-gitlab (6.5.1-2+wheezy1) UNRELEASED; urgency=low
+gitlab (6.5.1-2+wheezy1) unstable; urgency=low
 
   * Changed a lot of other locations where /home/git was hardcoded to the
     correct package paths like /usr/share/gitlab and /var/lib/gitlab
