@@ -1,4 +1,10 @@
-gitlab (6.5.1-4+wheezy1) UNRELEASED; urgency=low
+gitlab (6.6.0.pre1-1+wheezy1) wheezy; urgency=low
+
+  * Updated to 6.6.0.pre1 and refreshed all patches
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Wed, 19 Feb 2014 12:51:18 +0100
+
+gitlab (6.5.1-4+wheezy1) unstable; urgency=low
 
   * Removed HTTPS login patch. commit c447a2131d864cb715c0fb9ba562db67ade2f7c6
     is included again
