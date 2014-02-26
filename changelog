@@ -1,3 +1,9 @@
+gitlab (6.6.2-1+wheezy1) wheezy; urgency=low
+
+  * Updated to 6.6.2 and refreshed all patches
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Wed, 26 Feb 2014 12:50:36 +0100
+
 gitlab (6.6.0-1+wheezy1) wheezy; urgency=low
 
   * Updated to 6.6.0 and refreshed all patches
