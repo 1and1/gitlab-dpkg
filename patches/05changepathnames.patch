@@ -75,17 +75,6 @@
    
    # Increase this if you want to upload large attachments
    # Or if you want to accept large git objects over http
---- a/gitlab-shell/support/rewrite-hooks.sh
-+++ b/gitlab-shell/support/rewrite-hooks.sh
-@@ -3,7 +3,7 @@
- # $1 is an optional argument specifying the location of the repositories directory.
- # Defaults to /home/git/repositories if not provided
- 
--home_dir="/home/git"
-+home_dir="/var/lib/gitlab"
- src=${1:-"$home_dir/repositories"}
- 
- function create_link_in {
 --- a/gitlab-shell/lib/gitlab_config.rb
 +++ b/gitlab-shell/lib/gitlab_config.rb
 @@ -8,11 +8,11 @@

@@ -1,3 +1,9 @@
+gitlab (6.6.5-1+wheezy2) wheezy; urgency=low
+
+  * Updated gitlab-shell to 1.8.2
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Wed, 12 Mar 2014 09:54:35 +0100
+
 gitlab (6.6.5-1+wheezy1) wheezy; urgency=low
 
   * Updated to 6.6.5 and refreshed all patches
