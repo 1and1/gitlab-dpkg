@@ -1,14 +1,14 @@
 --- a/lib/backup/manager.rb
 +++ b/lib/backup/manager.rb
-@@ -97,7 +97,10 @@
-           puts "  Your current HEAD differs from the HEAD in the backup!".red
-           puts "  Please switch to the following revision and try again:".red
-           puts "  revision: #{settings[:gitlab_version]}".red
--          exit 1
-+#          exit 1
-+          puts "This check does not work with the packaged version!".red
-+          puts "The dummy repository in /usr/share/gitlab gives only".red
-+          puts "a randomized commit-hash so we continue with restore!".red
-         end
-       ensure
-         # chdir back to original intended dir
+@@ -95,7 +95,10 @@
+         puts "  version: #{settings[:gitlab_version]}".red
+         puts
+         puts "Hint: git checkout v#{settings[:gitlab_version]}"
+-        exit 1
++#        exit 1
++        puts "This check does not work with the packaged version!".red
++        puts "The dummy repository in /usr/share/gitlab gives only".red
++        puts "a randomized commit-hash so we continue with restore!".red
+       end
+     end
+ 

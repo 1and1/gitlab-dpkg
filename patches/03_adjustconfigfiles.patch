@@ -48,7 +48,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
      # signup_enabled: true
  
      # Restrict setting visibility levels for non-admin users.
-@@ -175,7 +174,7 @@
+@@ -188,7 +187,7 @@
    # GitLab Satellites
    satellites:
      # Relative paths are relative to Rails.root (default: tmp/repo_satellites/)
@@ -57,7 +57,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
    ## Backup settings
    backup:
-@@ -184,11 +183,11 @@
+@@ -197,11 +196,11 @@
  
    ## GitLab Shell settings
    gitlab_shell:
@@ -168,23 +168,24 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    # socket: /tmp/postgresql.sock
 --- a/config/database.yml.mysql
 +++ b/config/database.yml.mysql
-@@ -5,11 +5,11 @@
+@@ -5,12 +5,12 @@
    adapter: mysql2
    encoding: utf8
    reconnect: false
 -  database: gitlabhq_production
 +  database: gitlab
    pool: 10
+   reaping_frequency: 10
 -  username: git
 -  password: "secure password"
 -  # host: localhost
 +  username: gitlab
-+  password: 'gitlab'
++  password: "gitlab"
 +  host: localhost
    # socket: /tmp/mysql.sock
  
  #
-@@ -19,10 +19,11 @@
+@@ -20,10 +20,11 @@
    adapter: mysql2
    encoding: utf8
    reconnect: false
@@ -199,7 +200,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    # socket: /tmp/mysql.sock
  
  # Warning: The database defined as "test" will be erased and
-@@ -32,8 +33,9 @@
+@@ -33,8 +34,9 @@
    adapter: mysql2
    encoding: utf8
    reconnect: false
