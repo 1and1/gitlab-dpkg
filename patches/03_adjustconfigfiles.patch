@@ -37,18 +37,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
      ## Email settings
      # Email address used in the "From" field in mails sent by GitLab
-@@ -52,9 +52,8 @@
-     ##   COLOR  = 5
-     # default_theme: 2 # default: 2
- 
--
-     ## Users management
--    # default: false - Account passwords are not sent via the email if signup is enabled. 
-+    # default: false - Account passwords are not sent via the email if signup is enabled.
-     # signup_enabled: true
- 
-     # Restrict setting visibility levels for non-admin users.
-@@ -188,7 +187,7 @@
+@@ -198,7 +198,7 @@
    # GitLab Satellites
    satellites:
      # Relative paths are relative to Rails.root (default: tmp/repo_satellites/)
@@ -57,7 +46,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
    ## Backup settings
    backup:
-@@ -197,11 +196,11 @@
+@@ -207,11 +207,11 @@
  
    ## GitLab Shell settings
    gitlab_shell:
@@ -168,14 +157,13 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    # socket: /tmp/postgresql.sock
 --- a/config/database.yml.mysql
 +++ b/config/database.yml.mysql
-@@ -5,12 +5,12 @@
+@@ -5,11 +5,11 @@
    adapter: mysql2
    encoding: utf8
    reconnect: false
 -  database: gitlabhq_production
 +  database: gitlab
    pool: 10
-   reaping_frequency: 10
 -  username: git
 -  password: "secure password"
 -  # host: localhost
@@ -185,7 +173,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    # socket: /tmp/mysql.sock
  
  #
-@@ -20,10 +20,11 @@
+@@ -19,10 +19,11 @@
    adapter: mysql2
    encoding: utf8
    reconnect: false
@@ -200,7 +188,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    # socket: /tmp/mysql.sock
  
  # Warning: The database defined as "test" will be erased and
-@@ -33,8 +34,9 @@
+@@ -32,8 +33,9 @@
    adapter: mysql2
    encoding: utf8
    reconnect: false

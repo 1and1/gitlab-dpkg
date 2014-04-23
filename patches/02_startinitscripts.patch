@@ -10,7 +10,7 @@
 +sidekiq_logfile="/var/log/gitlab/sidekiq.log"
  gitlab_user=$(ls -l config.ru | awk '{print $3}')
  
- function stop
+ function warn
 --- a/script/web
 +++ b/script/web
 @@ -3,8 +3,8 @@
