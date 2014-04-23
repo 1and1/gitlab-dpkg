@@ -1,4 +1,5 @@
 app            usr/share/gitlab
+bin            usr/share/gitlab
 config.ru      usr/share/gitlab
 db             usr/share/gitlab
 Gemfile        usr/share/gitlab

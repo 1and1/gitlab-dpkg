@@ -1,6 +1,6 @@
 gitlab (6.8.1-1+wheezy1) wheezy; urgency=low
 
-  * Updated gitlab to 6.8.1
+  * Updated gitlab to 6.8.1, refreshed all patches and added bin folder
 
  -- Andreas Wirooks <andreas.wirooks@1und1.de>  Wed, 23 Apr 2014 15:16:43 +0200
 
