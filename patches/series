@@ -4,3 +4,4 @@
 04_initdscript.patch
 05changepathnames.patch
 06restoreignoreversion.patch
+07useruby1.9.1asdefault.patch

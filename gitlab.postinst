@@ -196,7 +196,7 @@ gitlab_app_initialize() {
 
    # initialize the gitlab application
    cd /usr/share/gitlab
-   sudo -u git -H bundle exec rake gitlab:setup RAILS_ENV=production
+   sudo -u git -H ruby1.9.1 /usr/bin/bundle exec rake gitlab:setup RAILS_ENV=production
 }
 
 #
@@ -228,7 +228,7 @@ gitlab_gen_secret() {
 #
 gitlab_backup() {
    cd /usr/share/gitlab
-   sudo -u git -H bundle exec rake gitlab:backup:create RAILS_ENV=production
+   sudo -u git -H ruby1.9.1 /usr/bin/bundle exec rake gitlab:backup:create RAILS_ENV=production
 }
 
 #
@@ -257,11 +257,11 @@ gitlab_upgrade() {
 
    # running migration tasks for gitlab
    cd /usr/share/gitlab
-   bundle exec rake db:migrate RAILS_ENV=production
-   bundle exec rake migrate_iids RAILS_ENV=production
-   bundle exec rake assets:clean RAILS_ENV=production
-   bundle exec rake assets:precompile RAILS_ENV=production
-   bundle exec rake cache:clear RAILS_ENV=production
+   ruby1.9.1 /usr/bin/bundle exec rake db:migrate RAILS_ENV=production
+   ruby1.9.1 /usr/bin/bundle exec rake migrate_iids RAILS_ENV=production
+   ruby1.9.1 /usr/bin/bundle exec rake assets:clean RAILS_ENV=production
+   ruby1.9.1 /usr/bin/bundle exec rake assets:precompile RAILS_ENV=production
+   ruby1.9.1 /usr/bin/bundle exec rake cache:clear RAILS_ENV=production
 
    # Set the permissions of the assets to git user
    chown -R git:git /var/cache/gitlab/cache

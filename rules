@@ -9,7 +9,7 @@ override_dh_installinit:
 	dh_installinit -pgitlab --name gitlab --onlyscripts
 
 override_dh_auto_build:
-	bundle install --deployment --without development test
+	ruby1.9.1 /usr/bin/bundle install --deployment --without development test
 	rm -rf vendor/bundle/ruby/1.9.1/cache lib/support/default
 	cp config/gitlab.yml.example config/gitlab.yml
 	cp config/resque.yml.example config/resque.yml

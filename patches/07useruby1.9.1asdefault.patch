@@ -1,0 +1,206 @@
+--- a/bin/bundle
++++ b/bin/bundle
+@@ -1,3 +1,3 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
+ load Gem.bin_path('bundler', 'bundle')
+--- a/bin/rails
++++ b/bin/rails
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ begin
+   load File.expand_path("../spring", __FILE__)
+ rescue LoadError
+--- a/bin/rake
++++ b/bin/rake
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ begin
+   load File.expand_path("../spring", __FILE__)
+ rescue LoadError
+--- a/bin/rspec
++++ b/bin/rspec
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ begin
+   load File.expand_path("../spring", __FILE__)
+ rescue LoadError
+--- a/bin/spinach
++++ b/bin/spinach
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ begin
+   load File.expand_path("../spring", __FILE__)
+ rescue LoadError
+--- a/bin/spring
++++ b/bin/spring
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ 
+ # This file loads spring without using Bundler, in order to be fast
+ # It gets overwritten when you run the `spring binstub` command
+--- a/gitlab-shell/bin/check
++++ b/gitlab-shell/bin/check
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ 
+ require_relative '../lib/gitlab_init'
+ require_relative '../lib/gitlab_net'
+--- a/gitlab-shell/bin/create-hooks
++++ b/gitlab-shell/bin/create-hooks
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ 
+ # Recreate GitLab hooks in the Git repositories managed by GitLab.
+ #
+--- a/gitlab-shell/bin/gitlab-keys
++++ b/gitlab-shell/bin/gitlab-keys
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ 
+ require_relative '../lib/gitlab_init'
+ 
+--- a/gitlab-shell/bin/gitlab-projects
++++ b/gitlab-shell/bin/gitlab-projects
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ 
+ 
+ require_relative '../lib/gitlab_init'
+--- a/gitlab-shell/bin/gitlab-shell
++++ b/gitlab-shell/bin/gitlab-shell
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ 
+ unless ENV['SSH_CONNECTION']
+   puts "Only ssh allowed"
+--- a/gitlab-shell/bin/install
++++ b/gitlab-shell/bin/install
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ 
+ require_relative '../lib/gitlab_init'
+ 
+--- a/gitlab-shell/hooks/update
++++ b/gitlab-shell/hooks/update
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ 
+ # This file was placed here by GitLab. It makes sure that your pushed commits
+ # will be processed properly.
+--- a/script/background_jobs
++++ b/script/background_jobs
+@@ -13,7 +13,7 @@
+ 
+ function stop
+ {
+-  bundle exec sidekiqctl stop $sidekiq_pidfile >> $sidekiq_logfile 2>&1
++  ruby1.9.1 /usr/bin/bundle exec sidekiqctl stop $sidekiq_pidfile >> $sidekiq_logfile 2>&1
+ }
+ 
+ function killall
+@@ -37,7 +37,7 @@
+ 
+ function start_sidekiq
+ {
+-  bundle exec sidekiq -q post_receive -q mailer -q system_hook -q project_web_hook -q gitlab_shell -q common -q default -e $RAILS_ENV -P $sidekiq_pidfile $@ >> $sidekiq_logfile 2>&1
++  ruby1.9.1 /usr/bin/bundle exec sidekiq -q post_receive -q mailer -q system_hook -q project_web_hook -q gitlab_shell -q common -q default -e $RAILS_ENV -P $sidekiq_pidfile $@ >> $sidekiq_logfile 2>&1
+ }
+ 
+ function load_ok
+--- a/script/check
++++ b/script/check
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production
++sudo -u git -H ruby1.9.1 /usr/bin/bundle exec rake gitlab:check RAILS_ENV=production
+--- a/script/rails
++++ b/script/rails
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env ruby
++#!/usr/bin/env ruby1.9.1
+ # This command will automatically be run when you run "rails" with Rails 3 gems installed from the root of your application.
+ 
+ APP_PATH = File.expand_path('../../config/application',  __FILE__)
+--- a/script/web
++++ b/script/web
+@@ -18,7 +18,7 @@
+ 
+ function start
+ {
+-  bundle exec unicorn_rails -D -c $unicorn_config -E $RAILS_ENV
++  ruby1.9.1 /usr/bin/bundle exec unicorn_rails -D -c $unicorn_config -E $RAILS_ENV
+ }
+ 
+ function stop
+--- a/lib/support/deploy/deploy.sh
++++ b/lib/support/deploy/deploy.sh
+@@ -5,13 +5,13 @@
+ set -e
+ 
+ echo 'Deploy: Stoping sidekiq..'
+-cd /usr/share/gitlab/ && sudo -u git -H bundle exec rake sidekiq:stop RAILS_ENV=production
++cd /usr/share/gitlab/ && sudo -u git -H ruby1.9.1 /usr/bin/bundle exec rake sidekiq:stop RAILS_ENV=production
+ 
+ echo 'Deploy: Show deploy index page'
+ sudo -u git -H cp /usr/share/gitlab/public/deploy.html /usr/share/gitlab/public/index.html
+ 
+ echo 'Deploy: Starting backup...'
+-cd /usr/share/gitlab/ && sudo -u git -H bundle exec rake gitlab:backup:create RAILS_ENV=production
++cd /usr/share/gitlab/ && sudo -u git -H ruby1.9.1 /usr/bin/bundle exec rake gitlab:backup:create RAILS_ENV=production
+ 
+ echo 'Deploy: Stop GitLab server'
+ sudo service gitlab stop
+@@ -28,12 +28,12 @@
+ echo 'Deploy: Bundle and migrate'
+ 
+ # change it to your needs
+-sudo -u git -H bundle --without aws development test mysql --deployment
++sudo -u git -H ruby1.9.1 /usr/bin/bundle --without aws development test mysql --deployment
+ 
+-sudo -u git -H bundle exec rake db:migrate RAILS_ENV=production
+-sudo -u git -H bundle exec rake assets:clean RAILS_ENV=production
+-sudo -u git -H bundle exec rake assets:precompile RAILS_ENV=production
+-sudo -u git -H bundle exec rake cache:clear RAILS_ENV=production
++sudo -u git -H ruby1.9.1 /usr/bin/bundle exec rake db:migrate RAILS_ENV=production
++sudo -u git -H ruby1.9.1 /usr/bin/bundle exec rake assets:clean RAILS_ENV=production
++sudo -u git -H ruby1.9.1 /usr/bin/bundle exec rake assets:precompile RAILS_ENV=production
++sudo -u git -H ruby1.9.1 /usr/bin/bundle exec rake cache:clear RAILS_ENV=production
+ 
+ # return stashed changes (if necessary)
+ # sudo -u git -H git stash pop
+--- a/lib/tasks/gitlab/check.rake
++++ b/lib/tasks/gitlab/check.rake
+@@ -170,7 +170,7 @@
+     def check_migrations_are_up
+       print "All migrations up? ... "
+ 
+-      migration_status, _ = Gitlab::Popen.popen(%W(bundle exec rake db:migrate:status))
++      migration_status, _ = Gitlab::Popen.popen(%W(ruby1.9.1 /usr/bin/bundle exec rake db:migrate:status))
+ 
+       unless migration_status =~ /down\s+\d{14}/
+         puts "yes".green
+--- a/lib/tasks/gitlab/generate_docs.rake
++++ b/lib/tasks/gitlab/generate_docs.rake
+@@ -1,7 +1,7 @@
+ namespace :gitlab do
+   desc "GITLAB | Generate sdocs for project"
+   task generate_docs: :environment do
+-    system(*%W(bundle exec sdoc -o doc/code app lib))
++    system(*%W(ruby1.9.1 /usr/bin/bundle exec sdoc -o doc/code app lib))
+   end
+ end
+ 
