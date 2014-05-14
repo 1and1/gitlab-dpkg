@@ -1,3 +1,9 @@
+gitlab (6.8.2-1+wheezy1) wheezy; urgency=low
+
+  * Updated gitlab to 6.8.2 and gitlab-shell to 1.9.4
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Wed, 14 May 2014 15:26:29 +0200
+
 gitlab (6.8.1-2+wheezy1) wheezy; urgency=low
 
   * Changed all startscripts to use ruby1.9.1 and start the bundler with 1.9.1
