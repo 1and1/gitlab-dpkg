@@ -3,17 +3,17 @@ Debian-Folder to build GitLab DPKG-Package.
 
 ## Prepare Build-Folder
 
-    git clone https://github.com/gitlabhq/gitlabhq gitlab_6.9.0
+    git clone https://github.com/gitlabhq/gitlabhq gitlab_6.9.1
 
-    cd gitlab_6.9.0 && git checkout v6.9.0
+    cd gitlab_6.9.1 && git checkout v6.9.1
 
     git clone https://github.com/gitlabhq/gitlab-shell
 
     cd gitlab-shell && git checkout v1.9.4
 
-    cd ../.. && tar -zcf gitlab_6.9.0.orig.tar.gz gitlab_6.9.0
+    cd ../.. && tar -zcf gitlab_6.9.1.orig.tar.gz gitlab_6.9.1
 
-    cd gitlab_6.9.0 && git clone https://github.com/1and1/gitlab-dpkg debian
+    cd gitlab_6.9.1 && git clone https://github.com/1and1/gitlab-dpkg debian
 
     cd debian && git checkout wheezy-6-9-stable
 
