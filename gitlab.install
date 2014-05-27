@@ -16,6 +16,7 @@ vendor/assets  usr/share/gitlab/vendor
 vendor/bundle  usr/share/gitlab/vendor
 vendor/plugins usr/share/gitlab/vendor
 
+config/aws.yml.example  usr/share/gitlab/config
 config/boot.rb          usr/share/gitlab/config
 config/environment.rb   usr/share/gitlab/config
 config/initializers     usr/share/gitlab/config
