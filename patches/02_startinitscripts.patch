@@ -1,5 +1,5 @@
---- a/script/background_jobs
-+++ b/script/background_jobs
+--- a/bin/background_jobs
++++ b/bin/background_jobs
 @@ -2,8 +2,8 @@
  
  cd $(dirname $0)/..
@@ -11,8 +11,8 @@
  gitlab_user=$(ls -l config.ru | awk '{print $3}')
  
  function warn
---- a/script/web
-+++ b/script/web
+--- a/bin/web
++++ b/bin/web
 @@ -3,8 +3,8 @@
  cd $(dirname $0)/..
  app_root=$(pwd)

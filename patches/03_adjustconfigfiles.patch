@@ -37,7 +37,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
      ## Email settings
      # Email address used in the "From" field in mails sent by GitLab
-@@ -197,7 +197,7 @@
+@@ -195,7 +195,7 @@
    # GitLab Satellites
    satellites:
      # Relative paths are relative to Rails.root (default: tmp/repo_satellites/)
@@ -46,7 +46,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
    ## Backup settings
    backup:
-@@ -206,11 +206,11 @@
+@@ -204,11 +204,11 @@
  
    ## GitLab Shell settings
    gitlab_shell:
@@ -63,7 +63,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
      upload_pack: true
 --- a/config/unicorn.rb.example
 +++ b/config/unicorn.rb.example
-@@ -26,24 +26,24 @@
+@@ -26,11 +26,11 @@
  
  # Help ensure your application will always spawn in the symlinked
  # "current" directory that Capistrano sets up.
@@ -77,6 +77,10 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  listen "127.0.0.1:8080", :tcp_nopush => true
  
  # nuke workers after 30 seconds instead of 60 seconds (the default)
+@@ -48,16 +48,17 @@
+ #
+ # For more information see http://stackoverflow.com/a/21682112/752049
+ #
 -timeout 30
 +timeout 300
  
@@ -91,6 +95,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
 -stdout_path "/home/git/gitlab/log/unicorn.stdout.log"
 +stderr_path "/var/log/gitlab/unicorn.stderr.log"
 +stdout_path "/var/log/gitlab/unicorn.stdout.log"
++
  
  # combine Ruby 2.0.0dev or REE with "preload_app true" for memory savings
  # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow

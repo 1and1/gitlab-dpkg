@@ -101,8 +101,8 @@
  
  # This file was placed here by GitLab. It makes sure that your pushed commits
  # will be processed properly.
---- a/script/background_jobs
-+++ b/script/background_jobs
+--- a/bin/background_jobs
++++ b/bin/background_jobs
 @@ -13,7 +13,7 @@
  
  function stop
@@ -121,22 +121,14 @@
  }
  
  function load_ok
---- a/script/check
-+++ b/script/check
+--- a/bin/check
++++ b/bin/check
 @@ -1,2 +1,2 @@
  #!/bin/sh
 -sudo -u git -H bundle exec rake gitlab:check RAILS_ENV=production
 +sudo -u git -H ruby1.9.1 /usr/bin/bundle exec rake gitlab:check RAILS_ENV=production
---- a/script/rails
-+++ b/script/rails
-@@ -1,4 +1,4 @@
--#!/usr/bin/env ruby
-+#!/usr/bin/env ruby1.9.1
- # This command will automatically be run when you run "rails" with Rails 3 gems installed from the root of your application.
- 
- APP_PATH = File.expand_path('../../config/application',  __FILE__)
---- a/script/web
-+++ b/script/web
+--- a/bin/web
++++ b/bin/web
 @@ -18,7 +18,7 @@
  
  function start
@@ -184,7 +176,7 @@
  # sudo -u git -H git stash pop
 --- a/lib/tasks/gitlab/check.rake
 +++ b/lib/tasks/gitlab/check.rake
-@@ -170,7 +170,7 @@
+@@ -180,7 +180,7 @@
      def check_migrations_are_up
        print "All migrations up? ... "
  
