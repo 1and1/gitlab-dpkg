@@ -1,3 +1,10 @@
+gitlab (7.0.0-2+wheezy1) wheezy; urgency=low
+
+  * Removed dependency to libxslt also
+  * Added missing GITLAB_SHELL_VERSION file
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Mon, 30 Jun 2014 16:29:03 +0200
+
 gitlab (7.0.0-1+wheezy1) wheezy; urgency=low
 
   * Updated gitlab to 7.0.0 and gitlab-shell to 1.9.6

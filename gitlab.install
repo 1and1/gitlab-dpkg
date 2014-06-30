@@ -8,6 +8,7 @@ lib            usr/share/gitlab
 public.example usr/share/gitlab
 Rakefile       usr/share/gitlab
 VERSION        usr/share/gitlab
+GITLAB_SHELL_VERSION usr/share/gitlab
 
 .bundle/config usr/share/gitlab/.bundle
 
@@ -48,6 +49,7 @@ MAINTENANCE.md             usr/share/doc/gitlab
 PROCESS.md                 usr/share/doc/gitlab
 README.md                  usr/share/doc/gitlab
 VERSION                    usr/share/doc/gitlab
+GITLAB_SHELL_VERSION       usr/share/doc/gitlab
 
 gitlab-shell/bin           usr/share/gitlab-shell
 gitlab-shell/Gemfile       usr/share/gitlab-shell
