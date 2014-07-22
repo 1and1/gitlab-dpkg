@@ -1,3 +1,9 @@
+gitlab (7.1.0-1+wheezy1) wheezy; urgency=low
+
+  * Updated to 7.1.0
+
+ -- Andreas Wirooks <andreas.wirooks@1und1.de>  Tue, 22 Jul 2014 15:49:13 +0200
+
 gitlab (7.0.0-2+wheezy1) wheezy; urgency=low
 
   * Removed dependency to libxslt also
