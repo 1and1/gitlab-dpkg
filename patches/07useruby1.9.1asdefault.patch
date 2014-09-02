@@ -176,7 +176,7 @@
  # sudo -u git -H git stash pop
 --- a/lib/tasks/gitlab/check.rake
 +++ b/lib/tasks/gitlab/check.rake
-@@ -180,7 +180,7 @@
+@@ -181,7 +181,7 @@
      def check_migrations_are_up
        print "All migrations up? ... "
  

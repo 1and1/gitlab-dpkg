@@ -4,7 +4,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
 
 --- a/gitlab-shell/config.yml.example
 +++ b/gitlab-shell/config.yml.example
-@@ -15,10 +15,10 @@
+@@ -19,10 +19,10 @@
  # Give the canonicalized absolute pathname,
  # REPOS_PATH MUST NOT CONTAIN ANY SYMLINK!!!
  # Check twice that none of the components is a symlink, including "/home".
@@ -17,7 +17,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
  # Redis settings used for pushing commit notices to gitlab
  redis:
-@@ -30,7 +30,7 @@
+@@ -34,7 +34,7 @@
  
  # Log file.
  # Default is gitlab-shell.log in the root directory.
@@ -37,16 +37,16 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
  
      ## Email settings
      # Email address used in the "From" field in mails sent by GitLab
-@@ -196,7 +196,7 @@
+@@ -197,7 +197,7 @@
    # GitLab Satellites
    satellites:
      # Relative paths are relative to Rails.root (default: tmp/repo_satellites/)
 -    path: /home/git/gitlab-satellites/
 +    path: /var/lib/gitlab/gitlab-satellites/
+     timeout: 30
  
    ## Backup settings
-   backup:
-@@ -205,11 +205,11 @@
+@@ -207,11 +207,11 @@
  
    ## GitLab Shell settings
    gitlab_shell:
