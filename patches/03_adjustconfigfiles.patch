@@ -194,7 +194,7 @@ Author: Andreas Wirooks <andreas.wirooks@1und1.de>
    encoding: utf8
    reconnect: false
 -  database: gitlabhq_test
-+  database: gitlab
++  database: gitlab_test
    pool: 5
 -  username: root
 -  password:
